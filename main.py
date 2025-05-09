@@ -33,13 +33,13 @@ def clean_clinicals_trials(df) :
     # décodage des mots mal codés
     df_clinicals_trials['scientific_title'] = df_clinicals_trials['scientific_title'].apply(decode_escaped_bytes)
     
-    # formater les titres scientifiques en minuscules
-    df_clinicals_trials.loc[:,'scientific_title'] = df_clinicals_trials['scientific_title'].apply(normalize_text)
-    df_clinicals_trials.loc[:,'journal'] = df_clinicals_trials['journal'].apply(normalize_text)
-    
     # décodage des colonnes avec erreurs
     df_clinicals_trials.loc[:,'journal'] = df_clinicals_trials['journal'].apply(remove_hex_escapes)
     df_clinicals_trials.loc[:,'scientific_title'] = df_clinicals_trials['scientific_title'].apply(remove_hex_escapes)
+    
+    # formater les titres scientifiques en minuscules
+    df_clinicals_trials.loc[:,'scientific_title'] = df_clinicals_trials['scientific_title'].apply(normalize_text)
+    df_clinicals_trials.loc[:,'journal'] = df_clinicals_trials['journal'].apply(normalize_text)
     
     # mettre la colonne des id en index
     df_clinicals_trials = df_clinicals_trials.set_index(df_clinicals_trials.columns[0])

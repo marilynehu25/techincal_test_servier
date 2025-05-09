@@ -34,8 +34,7 @@ Pour vérifier que l'environnement est activé et que les paquets sont installé
 
 # **2. Arborescence de notre dossier**
 
-```
-techincal_test_servier/
+```techincal_test_servier/
 ├── raw_data/              # Données sources (CSV/JSON)
 │   ├── drugs.csv
 │   ├── pubmed.csv
@@ -50,8 +49,6 @@ techincal_test_servier/
 │   ├── graph_builder.py   # Construction du graphe final et sauvegarde
 │   └── utils.py           # Fonctions utilitaires (nettoyage, encodage, etc.)
 ├── main.py                # Script principal orchestrant toutes les étapes
+├── journal_insight.py     # Feature pour la partie ad-hoc qui permet de trouver le journal mentionnant le plus de médicaments
 ├── environment.yml       # Dépendances du projet
-└── README.md              # Documentation du projet
-```
-
-
+└── README.md              # Documentation du projet```
