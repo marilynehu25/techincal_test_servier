@@ -51,7 +51,7 @@ drug_graph_pipeline/
 │   ├── graph_builder.py   # Construction du graphe final et sauvegarde
 │   └── utils.py           # Fonctions utilitaires (nettoyage, encodage, etc.)
 ├── main.py                # Script principal orchestrant toutes les étapes
-├── requirements.txt       # Dépendances du projet
+├── environment.yml       # Dépendances du projet
 └── README.md              # Documentation du projet
 ```
 
