@@ -35,8 +35,7 @@ Pour vérifier que l'environnement est activé et que les paquets sont installé
 # **2. Arborescence de notre dossier**
 
 ```
-drug_graph_pipeline/
-├── data/                  # (optionnel) Données en entrée si test local
+techincal_test_servier/
 ├── raw_data/              # Données sources (CSV/JSON)
 │   ├── drugs.csv
 │   ├── pubmed.csv
