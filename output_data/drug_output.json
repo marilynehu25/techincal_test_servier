@@ -1,0 +1,168 @@
+[
+  {
+    "drug_name": "diphenhydramine",
+    "drug_id": "A04AD",
+    "pubmed": [
+      {
+        "id": 1,
+        "title": "a 44 - year - old man with erythema of the face diphenhydramine , neck , and chest , weakness , and palpitations",
+        "date_mention": "2019-01-01",
+        "journal": "journal of emergency nursing"
+      },
+      {
+        "id": 2,
+        "title": "an evaluation of benadryl , pyribenzamine , and other so - called diphenhydramine antihistaminic drugs in the treatment of allergy .",
+        "date_mention": "2019-01-01",
+        "journal": "journal of emergency nursing"
+      },
+      {
+        "id": 3,
+        "title": "diphenhydramine hydrochloride helps symptoms of ciguatera fish poisoning .",
+        "date_mention": "2019-02-01",
+        "journal": "the journal of pediatrics"
+      }
+    ],
+    "clinical_trials": [
+      {
+        "id": "NCT01967433",
+        "title": "use of diphenhydramine as an adjunctive sedative for colonoscopy in patients chronically on opioids",
+        "date_mention": "2020-01-01",
+        "journal": "journal of emergency nursing"
+      },
+      {
+        "id": "NCT04189588",
+        "title": "phase 2 study iv quzyttir TM ( cetirizine hydrochloride injection ) vs v diphenhydramine",
+        "date_mention": "2020-01-01",
+        "journal": "journal of emergency nursing"
+      },
+      {
+        "id": "NCT04237091",
+        "title": "feasibility of a randomized controlled clinical trial comparing the use of cetirizine to replace diphenhydramine in the prevention of reactions related to paclitaxel",
+        "date_mention": "2020-01-01",
+        "journal": "journal of emergency nursing"
+      }
+    ]
+  },
+  {
+    "drug_name": "tetracycline",
+    "drug_id": "S03AA",
+    "pubmed": [
+      {
+        "id": 4,
+        "title": "tetracycline resistance patterns of lactobacillus buchneri group strains .",
+        "date_mention": "2020-01-01",
+        "journal": "journal of food protection"
+      },
+      {
+        "id": 5,
+        "title": "appositional tetracycline bone formation rates in the beagle .",
+        "date_mention": "2020-02-01",
+        "journal": "american journal of veterinary research"
+      },
+      {
+        "id": 6,
+        "title": "rapid reacquisition of contextual fear following extinction in mice : effects of amount of extinction , tetracycline acute ethanol withdrawal , and ethanol intoxication .",
+        "date_mention": "2020-01-01",
+        "journal": "psychopharmacology"
+      }
+    ],
+    "clinical_trials": []
+  },
+  {
+    "drug_name": "ethanol",
+    "drug_id": "V03AB",
+    "pubmed": [
+      {
+        "id": 6,
+        "title": "rapid reacquisition of contextual fear following extinction in mice : effects of amount of extinction , tetracycline acute ethanol withdrawal , and ethanol intoxication .",
+        "date_mention": "2020-01-01",
+        "journal": "psychopharmacology"
+      }
+    ],
+    "clinical_trials": []
+  },
+  {
+    "drug_name": "atropine",
+    "drug_id": "A03BA",
+    "pubmed": [
+      {
+        "id": 13,
+        "title": "comparison of pressure betamethasone release , phonophoresis and dry needling in treatment of latent myofascial trigger point of upper trapezius atropine muscle .",
+        "date_mention": "2020-01-03",
+        "journal": "the journal of maternal - fetal & neonatal medicine"
+      }
+    ],
+    "clinical_trials": []
+  },
+  {
+    "drug_name": "epinephrine",
+    "drug_id": "A01AD",
+    "pubmed": [
+      {
+        "id": 7,
+        "title": "the high cost of epinephrine autoinjectors and possible alternatives .",
+        "date_mention": "2020-01-02",
+        "journal": "the journal of allergy and clinical immunology . in practice"
+      },
+      {
+        "id": 8,
+        "title": "time to epinephrine treatment is associated with the risk of mortality in children who achieve sustained rosc after traumatic out - of - hospital cardiac arrest .",
+        "date_mention": "2020-01-03",
+        "journal": "the journal of allergy and clinical immunology . in practice"
+      }
+    ],
+    "clinical_trials": [
+      {
+        "id": "NCT04188184",
+        "title": "tranexamic acid versus epinephrine during exploratory tympanotomy",
+        "date_mention": "2020-04-27",
+        "journal": "journal of emergency nursing \\ xc3 \\ x28"
+      }
+    ]
+  },
+  {
+    "drug_name": "isoprenaline",
+    "drug_id": "6302001",
+    "pubmed": [
+      {
+        "id": 9,
+        "title": "gold nanoparticles synthesized from euphorbia fischeriana root by green route method alleviates the isoprenaline hydrochloride induced myocardial infarction in rats .",
+        "date_mention": "2020-01-01",
+        "journal": "journal of photochemistry and photobiology . b , biology"
+      }
+    ],
+    "clinical_trials": []
+  },
+  {
+    "drug_name": "betamethasone",
+    "drug_id": "R01AD",
+    "pubmed": [
+      {
+        "id": 10,
+        "title": "clinical implications of umbilical artery doppler changes after betamethasone administration",
+        "date_mention": "2020-01-01",
+        "journal": "the journal of maternal - fetal & neonatal medicine"
+      },
+      {
+        "id": "11",
+        "title": "effects of topical application of betamethasone on imiquimod - induced psoriasis - like skin inflammation in mice .",
+        "date_mention": "2020-01-01",
+        "journal": "journal of back and musculoskeletal rehabilitation"
+      },
+      {
+        "id": 13,
+        "title": "comparison of pressure betamethasone release , phonophoresis and dry needling in treatment of latent myofascial trigger point of upper trapezius atropine muscle .",
+        "date_mention": "2020-01-03",
+        "journal": "the journal of maternal - fetal & neonatal medicine"
+      }
+    ],
+    "clinical_trials": [
+      {
+        "id": "NCT04153396",
+        "title": "preemptive infiltration with betamethasone and ropivacaine for postoperative pain in laminoplasty or n laminectomy",
+        "date_mention": "2020-01-01",
+        "journal": "hopitaux universitaires de geneve"
+      }
+    ]
+  }
+]
