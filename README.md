@@ -34,7 +34,8 @@ Pour vérifier que l'environnement est activé et que les paquets sont installé
 
 # **2. Arborescence de notre dossier**
 
-```techincal_test_servier/
+```
+techincal_test_servier/
 ├── raw_data/              # Données sources (CSV/JSON)
 │   ├── drugs.csv
 │   ├── pubmed.csv
@@ -51,4 +52,9 @@ Pour vérifier que l'environnement est activé et que les paquets sont installé
 ├── main.py                # Script principal orchestrant toutes les étapes
 ├── journal_insight.py     # Feature pour la partie ad-hoc qui permet de trouver le journal mentionnant le plus de médicaments
 ├── environment.yml       # Dépendances du projet
-└── README.md              # Documentation du projet```
+└── README.md              # Documentation du projet
+```
+
+Dans ce dossier vous trouverez l'entièreté des éléments utiles pour le bon foctionnement de la pipeline. 
+
+Pour pourvoir lancer la pipeline, il faut exécuter les étapes de la partie **1. Guide d'intallation de l'Environnement** et ensuite exécuter le fichier main.py. Vous retrouverez le json final sous le répertoire **output_data/drug_output.json**.
