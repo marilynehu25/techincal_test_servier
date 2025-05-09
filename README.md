@@ -34,3 +34,28 @@ Pour vérifier que l'environnement est activé et que les paquets sont installé
 
 # **2. Arborescence de notre dossier**
 
+drug_graph_pipeline/
+│
+├── data/                      # (optionnel) Données en entrée si test local
+│
+├── raw_data/                  # Données sources (CSV/JSON)
+│   ├── drugs.csv
+│   ├── pubmed.csv
+│   ├── pubmed.json
+│   └── clinical_trials.csv
+│
+├── output_data/               # Dossier de sortie du fichier JSON final
+│   └── drug_output.json
+│
+├── src/                       # Code source modulaire
+│   ├── __init__.py
+│   ├── loader.py             # Fonctions de chargement des fichiers
+│   ├── processor.py          # Matching entre médicaments et publications
+│   ├── graph_builder.py      # Construction du graphe final et sauvegarde
+│   └── utils.py              # Fonctions utilitaires (nettoyage, encodage, etc.)
+│
+├── main.py                   # Script principal orchestrant toutes les étapes
+├── requirements.txt          # Dépendances du projet
+└── README.md                 # Documentation du projet
+
+
