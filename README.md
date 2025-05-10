@@ -1,6 +1,6 @@
 # **1. Guide d'installation de l'Environnement**
 
-Pour pouvoir effectuer les TD du cours de *Machine Learning*, il faut créer un environnement virtuel et installer les librairies nécessaires.
+La première étape serait d'installer les librairies python, nécessaire au bon fonctionnement de la pipeline. 
 
 Ce guide vous explique comment configurer votre environnement de développement en utilisant un fichier `environment.yml` avec Conda.
 
@@ -70,6 +70,8 @@ telles volumétries ?
 Dans le cadre d’une généralisation de la pipeline à des données de très grande volumétrie, il est essentiel de repenser le format des fichiers d’entrée. Pour des volumes de plusieurs téraoctets, les formats **CSV** ou **JSON** deviennent rapidement inefficaces, car ils impliquent une lecture **ligne par ligne**, donc de l’ensemble des données. À l’inverse, le format **Parquet**, basé sur une organisation **colonnaire**, permet une lecture plus rapide et sélective des données, ce qui en fait un choix bien plus adapté à un contexte Big Data.
 
 Par ailleurs, la librairie ``pandas``, bien qu’omniprésente pour le traitement de données, charge l'intégralité des fichiers en mémoire vive (RAM), ce qui la rend inadaptée dès que les volumes deviennent trop importants. Pour une montée en échelle tout en minimisant les modifications du code existant, il est pertinent d’utiliser la librairie ``dask``. Celle-ci permet une exécution **parallèle** des traitements en divisant les données en **blocs**, tout en conservant une API très proche de celle de ``pandas``. De plus, ``dask`` est **nativement compatible avec le format Parquet**, ce qui renforce la cohérence de cette solution.
+
+> [Description de la librairie ``dask``](https://docs.dask.org/en/stable/dataframe.html) et sur [le traitement des fichiers parquet](https://docs.dask.org/en/latest/dataframe-parquet.html).
 
 Concernant l’architecture de la pipeline, la structure actuelle, définie dans ``main.py``, suit une **logique linéaire et directive**, ce qui la rend **orchestrable**, mais **non orchestrée**. Dans une perspective Big Data, il serait plus approprié d’opter pour **une orchestration sous forme de DAG (Directed Acyclic Graph) à l’aide d’un outil comme Apache Airflow**.
 

@@ -4,7 +4,10 @@ import json
 import os
 import numpy as np
 
-def final_json(dictionnaire_df, list_drugs, list_drugs_id = None) : 
+journal_json = True 
+link_journal_pub = False
+
+def final_json(dictionnaire_df, list_drugs, list_drugs_id = False, journal_json = journal_json, link_journal_pub = link_journal_pub) : 
 
     """
     VARIABLES : 
@@ -24,13 +27,18 @@ def final_json(dictionnaire_df, list_drugs, list_drugs_id = None) :
                 - 'journal' : le nom de la colonne des journaux dans le dataframe
         - list_drugs : la liste des noms de drug
         - list_drugs_id : la liste des id de drug (optionnel)
+        - journal_json = False : variable booléen indiquant si on ajoute la clé 'journal' comme lien direct
+        - link_journal_pub = True : variable booléen indiquant si on fait apparaître la relation entre les publications et le journal
     
     DESCRIPTION : 
         Cette fonction a pour but de générer une liste de dictionnaire pour chaque drug où on associe les publications et journaux
         mentionnant son nom, ainsi que sa date de mention dans chaque publication.
+        On a volairement choisi par défaut la liaison indirecte des journaux car ça donne une structure plus précise : (journal_json = False, link_journal_pub = True).
+        Si on veut la structure directe des publications et des journaux, on doit avoir : (journal_json = True, link_journal_pub = False).
+        Si on souhaite avoir les deux, on peut saisir : (journal_json = True, link_journal_pub = True).
 
     SORTIE :
-        En sortie, on a une liste de la forme suivante pour 1 drug : 
+        En sortie, on a une liste de la forme suivante pour 1 drug si on a (journal_json = True, link_journal_pub = True) : 
             [
                 {
                     'drug_name': 'epinephrine',
@@ -46,7 +54,8 @@ def final_json(dictionnaire_df, list_drugs, list_drugs_id = None) :
                     'clinical_trials': [{'id': 'NCT04188184',
                     'title': 'tranexamic acid versus epinephrine during exploratory tympanotomy',
                     'date_mention': '2020-04-27',
-                    'journal': 'journal of emergency nursing'}]
+                    'journal': 'journal of emergency nursing'}] ,
+                    'journal' : {'journal of emergency nursing' : ["2019-01-01", "2020-04-27"]}
                         }
                             ]
     """
@@ -80,14 +89,51 @@ def final_json(dictionnaire_df, list_drugs, list_drugs_id = None) :
             for idx in diction['index'][drugs] : 
                 # récupération des lignes de publication dans le dataframe où le drug est mentionné
                 data = df.loc[idx]
+
                 # écriture du dictionnaire associé à la publication
-                dict_idx = {'id' : idx , 
-                    'title' : data[diction['title']] , 
-                    'date_mention' : data[diction['date_mention']], 
-                    'journal' : data[diction['journal']]}
+                if link_journal_pub : 
+                    dict_idx = {'id' : idx , 
+                        'title' : data[diction['title']] , 
+                        'date_mention' : data[diction['date_mention']], 
+                        'journal' : data[diction['journal']]}
+                else : 
+                    dict_idx = {'id' : idx , 
+                        'title' : data[diction['title']] , 
+                        'date_mention' : data[diction['date_mention']]}
+                
                 # ajout du dictionnaire de la publication dans la liste de la mention associé
                 diction_json[diction['nom_mention']].append(dict_idx)
         
+        # choix d'ajout de la clé 'journal
+        if journal_json : 
+
+            # création de la clé 'journal'
+            diction_json['journal'] = {}
+
+            # itération sur tous les dataframes de publications
+            for diction in tqdm(dictionnaire_df): 
+
+                # dataframe de publication
+                df = diction['df']
+                # extraction de toutes la plage de datafrme pour le drug
+                data_drug_journal = df.loc[diction['index'][drugs]]
+                # obtention de la liste des journaux du dataframe
+                list_journal = data_drug_journal['journal'].unique().tolist()
+                # itération sur les journaux un par un
+                for journal in list_journal : 
+                    # extraction de la liste de date pour le journal associé
+                    mask_journal_date = data_drug_journal['journal'] == journal
+                    list_data_journal = data_drug_journal.loc[mask_journal_date,'date'].tolist()
+
+                    # ajout de nouvelles éléments si le journal existe déjà
+                    if journal in diction_json['journal'].keys() : 
+                        diction_json['journal'][journal] = diction_json['journal'][journal] + list_data_journal
+                    # affectation de nouvelle élément si le journal n'existe pas encore dans le dictionnaire
+                    else : 
+                        diction_json['journal'][journal] = list_data_journal
+                    # enlève les duplications dans les listes de dates
+                    diction_json['journal'][journal] = list(set(diction_json['journal'][journal]))
+            
         # ajout du dictionnaire associé au drug à la liste de sortie
         final_json.append(diction_json)
         

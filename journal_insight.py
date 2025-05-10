@@ -6,20 +6,28 @@ path = 'output_data\\'
 with open(path + 'drug_output.json', 'r', encoding='utf-8') as fichier:
     data = json.load(fichier)
 
-def ad_hoc_journal(data):
+def ad_hoc_journal(data , journal_json = False, link_journal_pub = True):
 
     journal_drug_map = defaultdict(set)
 
-    for drug_entry in data:
-        drug = drug_entry['drug_name']
-        for source in ['pubmed', 'clinical_trials']:
-            for mention in drug_entry.get(source, []):
-                journal = mention['journal']
+    if link_journal_pub : 
+        for drug_entry in data:
+            drug = drug_entry['drug_name']
+            for source in ['pubmed', 'clinical_trials']:
+                for mention in drug_entry.get(source, []):
+                    journal = mention['journal']
+                    journal_drug_map[journal].add(drug)
+
+    elif journal_json :
+        for drug_entry in data:
+            drug = drug_entry['drug_name']
+            journal_dict = drug_entry.get('journal', {})
+            for journal, dates in journal_dict.items():
                 journal_drug_map[journal].add(drug)
 
     # Chercher le journal avec le plus de drugs différents
     best_journal, drugs = max(journal_drug_map.items(), key=lambda x: len(x[1]))
-    
+
     return best_journal, drugs
 
 def main() : 
