@@ -4,8 +4,8 @@ import json
 import os
 import numpy as np
 
-journal_json = True 
-link_journal_pub = False
+journal_json = True # Cas où "journal" est dans chaque dictionnaire de drug
+link_journal_pub = False # Cas où "journal" est dans chaque publication
 
 def final_json(dictionnaire_df, list_drugs, list_drugs_id = False, journal_json = journal_json, link_journal_pub = link_journal_pub) : 
 
