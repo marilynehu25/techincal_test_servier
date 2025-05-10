@@ -58,3 +58,24 @@ techincal_test_servier/
 Dans ce dossier vous trouverez l'entièreté des éléments utiles pour le bon foctionnement de la pipeline. 
 
 Pour pourvoir lancer la pipeline, il faut exécuter les étapes de la partie **1. Guide d'intallation de l'Environnement** et ensuite exécuter le fichier main.py. Vous retrouverez le json final sous le répertoire **output_data/drug_output.json**.
+
+# **3. Pour aller plus loin ...**
+
+>Quels sont les éléments à considérer pour faire évoluer votre code afin qu’il puisse gérer de grosses
+volumétries de données (fichiers de plusieurs To ou millions de fichiers par exemple) ?
+>
+>Pourriez-vous décrire les modifications qu’il faudrait apporter, s’il y en a, pour prendre en considération de
+telles volumétries ?
+
+Dans le cadre d’une généralisation de la pipeline à des données de très grande volumétrie, il est essentiel de repenser le format des fichiers d’entrée. Pour des volumes de plusieurs téraoctets, les formats **CSV** ou **JSON** deviennent rapidement inefficaces, car ils impliquent une lecture **ligne par ligne**, donc de l’ensemble des données. À l’inverse, le format **Parquet**, basé sur une organisation **colonnaire**, permet une lecture plus rapide et sélective des données, ce qui en fait un choix bien plus adapté à un contexte Big Data.
+
+Par ailleurs, la librairie ``pandas``, bien qu’omniprésente pour le traitement de données, charge l'intégralité des fichiers en mémoire vive (RAM), ce qui la rend inadaptée dès que les volumes deviennent trop importants. Pour une montée en échelle tout en minimisant les modifications du code existant, il est pertinent d’utiliser la librairie ``dask``. Celle-ci permet une exécution **parallèle** des traitements en divisant les données en **blocs**, tout en conservant une API très proche de celle de ``pandas``. De plus, ``dask`` est **nativement compatible avec le format Parquet**, ce qui renforce la cohérence de cette solution.
+
+Concernant l’architecture de la pipeline, la structure actuelle, définie dans ``main.py``, suit une **logique linéaire et directive**, ce qui la rend **orchestrable**, mais **non orchestrée**. Dans une perspective Big Data, il serait plus approprié d’opter pour **une orchestration sous forme de DAG (Directed Acyclic Graph) à l’aide d’un outil comme Apache Airflow**.
+
+Actuellement, notre pipeline présente certaines limitations :
+- La fonction `main()` enchaîne les étapes de manière linéaire, sans gestion explicite des dépendances entre les tâches, ce qui limite la flexibilité ;
+
+- Les tâches ne sont pas conçues pour être exécutées de manière indépendante ou relancées isolément ;
+
+- En cas d’échec d’une étape, l’ensemble du pipeline doit être relancé, faute de mécanismes de reprise ou de gestion d’erreurs à la tâche.
