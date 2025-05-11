@@ -70,7 +70,74 @@ techincal_test_servier/
 
 Dans ce dossier vous trouverez l'entièreté des éléments utiles pour le bon foctionnement de la pipeline. 
 
-Pour pourvoir lancer la pipeline, il faut exécuter les étapes de la partie **1. Guide d'intallation de l'Environnement** et ensuite exécuter le fichier main.py. Vous retrouverez le json final sous le répertoire **output_data/drug_output.json**.
+Pour pourvoir lancer la pipeline, il faut exécuter les étapes de la partie **1. Guide d'intallation de l'Environnement** et ensuite exécuter le fichier _main.py_. Vous retrouverez le json final sous le répertoire _output_data/drug_output.json_.
+
+En sortie du pipeline, nous obtenons un JSON enregistrant une liste de dictionnaire respectant la structure du schéma comme ci-dessous (un dictionnaire fait référence à un médicament) :  
+
+```
+[
+  {
+    "drug_name": "diphenhydramine",
+    "drug_id": "A04AD",
+    "pubmed": [
+      {
+        "id": 1,
+        "title": "a 44 - year - old man with erythema of the face diphenhydramine , neck , and chest , weakness , and palpitations",
+        "date_mention": "2019-01-01"
+      },
+      {
+        "id": 2,
+        "title": "an evaluation of benadryl , pyribenzamine , and other so - called diphenhydramine antihistaminic drugs in the treatment of allergy .",
+        "date_mention": "2019-01-01"
+      },
+      {
+        "id": 3,
+        "title": "diphenhydramine hydrochloride helps symptoms of ciguatera fish poisoning .",
+        "date_mention": "2019-02-01"
+      }
+    ],
+    "clinical_trials": [
+      {
+        "id": "NCT01967433",
+        "title": "use of diphenhydramine as an adjunctive sedative for colonoscopy in patients chronically on opioids",
+        "date_mention": "2020-01-01"
+      },
+      {
+        "id": "NCT04189588",
+        "title": "phase 2 study iv quzyttir TM ( cetirizine hydrochloride injection ) vs v diphenhydramine",
+        "date_mention": "2020-01-01"
+      },
+      {
+        "id": "NCT04237091",
+        "title": "feasibility of a randomized controlled clinical trial comparing the use of cetirizine to replace diphenhydramine in the prevention of reactions related to paclitaxel",
+        "date_mention": "2020-01-01"
+      }
+    ],
+    "journal": {
+      "journal of emergency nursing": [
+        "2019-01-01",
+        "2020-01-01"
+      ],
+      "the journal of pediatrics": [
+        "2019-02-01"
+      ]
+    }
+  }
+    ]
+```
+
+Un autre structure sera proposé lors de la présentation, mais qui est tout à fait pertinent pour le cadre du projet.
+
+Suite à la sortie du fichier JSON, nous pouvons le tester à traver un traitement ad-hoc via le fichier _journal_insight.py_. Le but serait de savoir quelle journal mentionne le plus de médicaments différents. La fonction dédiée à ce traitement est robuste à la forme du JSON en entrée, il peut détecter automatiquement la présence de la clé *journal*. 
+
+Le résultat obtenu pour nos données est : 
+```
+Le journal mentionnant le plus de médicaments est :  JOURNAL OF EMERGENCY NURSING .
+
+Il y a  2  médicaments mentionnées, qui sont :  {'epinephrine', 'diphenhydramine'} .
+```
+
+Dans le répertoire _dags/_ une première structuration du DAG est proposée et sera expliciter sera durant la présentation.
 
 # **3. Pour aller plus loin ...**
 
